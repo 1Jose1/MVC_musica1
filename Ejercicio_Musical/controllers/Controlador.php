@@ -1,14 +1,5 @@
 <?php	
 
-	//Agregamos los includes
-		include_once("../models/IniciarConexion.php");
-		include_once("../models/CierreConexion.php");
-		include_once("../models/BusquedaCliente.php");
-		include_once("../models/FacturasCliente.php");	
-		include_once("../models/FacturasClienteFechas.php");	
-		include_once("../models/InsertarFactura.php");	
-		include_once("../models/InsertarLineasFactura.php");	
-
 	//Controlador
 	if(isset($_REQUEST['comprobacion'])){
 		include_once("controllers/Controlador.php");	
@@ -24,7 +15,12 @@
 	//Comroubea que el cliente existe
 	//Recibe el correo y la password
 	//No retorna pero confirma la existencia del empleado y almacena sus sesiones	
-	function comprobacionCliente($correo,$password){		
+	function comprobacionCliente($correo,$password){
+		//Agregamos los includes
+		include_once("../models/IniciarConexion.php");
+		include_once("../models/CierreConexion.php");
+		include_once("../models/BusquedaCliente.php");
+		
 		//Abrimos la conexionMySQL
 		$conexionMySQL=iniciarConexion();
 		
@@ -60,6 +56,12 @@
 	//No le pasamos nada porque ya lo tenemos almacenado en las sesiones
 	//Nos retornara una vista de tablas con la informacion que venimos buscando
 	function mostrarFacturas(){
+		//Agregamos los includes
+		include_once("../models/IniciarConexion.php");
+		include_once("../models/CierreConexion.php");
+		include_once("../models/FacturasCliente.php");	
+		include_once("../models/FacturasClienteFechas.php");	
+		
 		//Abrimos la conexionMySQL
 		$conexionMySQL=iniciarConexion();
 		
@@ -77,6 +79,10 @@
 	//Le pasamos las 2 fechas y no es necesario ningun id porque ya contamos con el en las sesiones
 	//Nos retornara una vista de tablas con la informacion que venimos buscando
 	function mostrarFacturasEntreFechas($fecha1,$fecha2){
+		//Agregamos los includes
+		include_once("../models/IniciarConexion.php");
+		include_once("../models/CierreConexion.php");			
+		include_once("../models/FacturasClienteFechas.php");	
 		//Abrimos la conexionMySQL
 		$conexionMySQL=iniciarConexion();
 		
@@ -104,7 +110,7 @@
 	//Metodo que nos retorna la array del cliete con sus productos
 	//No le enviamos nada porque tenemos la sesion
 	//Nos retornara el array
-	function compruebaLaExistenciaCookie(){
+	function compruebaLaExistenciaCookie(){		
 		$arrayProductos=array();
 		if(isset($_COOKIE[$_SESSION['id']])){
 			$arrayProductos=unserialize($_COOKIE[$_SESSION['id']]);
@@ -118,7 +124,7 @@
 	//Metodo que introduce en el carrito si es repetrido no lo suma
 	//Le enviamos el nombre de la cancion
 	//No nos retorna nada ,solo actualiza las cookies
-	function anadirCarrito($musicaId){
+	function anadirCarrito($musicaId){		
 		$arrayProductos=compruebaLaExistenciaCookie();
 		$repetido=false;
 		for($i=0;$i<count($arrayProductos);$i++){
@@ -146,6 +152,12 @@
 	//No le enviamos nada por que solo requerimos de las cookies
 	//No nos retorna nada	
 	function comprar(){
+		//Agregamos los includes
+		include_once("../models/IniciarConexion.php");
+		include_once("../models/CierreConexion.php");
+		include_once("../models/InsertarFactura.php");	
+		include_once("../models/InsertarLineasFactura.php");
+		
 		$arrayProductos=compruebaLaExistenciaCookie();
 		if(count($arrayProductos)>0){
 			//Abrimos la conexionMySQL
