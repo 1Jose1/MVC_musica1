@@ -3,10 +3,10 @@
 // Iniciar Conexion con la Base de Datos
 	function iniciarConexion(){		
 		// Parametros para la Base de Datos
-		$servername="localhost";
+		$servername="10.131.98.19";
 		$usuario="root";
 		$contrasena="rootroot";
-		$baseDatos="musica";
+		$baseDatos="spotify";
 				
 		$conexionMySQL=mysqli_connect($servername,$usuario,$contrasena,$baseDatos);		
 		return $conexionMySQL;
