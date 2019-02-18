@@ -48,7 +48,7 @@
 	</head>
 	<body>
 		<div id="inicio">
-			<form action="controllers/controlador.php" method="post">
+			<form action="/controllers/controlador.php" method="post">
 				<h2>Login</h2>
 				<div>
 					<p>Correo: </p><input type="text" name="correo">
