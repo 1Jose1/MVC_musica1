@@ -7,7 +7,7 @@
 		//Array donde se almacenaran los datos
 		$datos=[];		
 		
-		$respuesta=mysqli_query($conexionMySQL,"select FirstName,CustomerId,LastName,Email from customer where LastName='".$password."' and Email='".$correo."';");
+		$respuesta=mysqli_query($conexionMySQL,"select FirstName,CustomerId,LastName,Email from Customer where LastName='".$password."' and Email='".$correo."';");
 					
 		if(mysqli_num_rows($respuesta)==1){
 			$respuesta=mysqli_fetch_assoc($respuesta);
